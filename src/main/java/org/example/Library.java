@@ -3,6 +3,7 @@ package org.example;
 import java.util.Arrays;
 import java.util.Objects;
 
+@SuppressWarnings("unused")
 public class Library
 {
     private Book[] books;
