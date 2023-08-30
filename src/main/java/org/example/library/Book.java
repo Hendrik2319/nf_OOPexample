@@ -1,4 +1,4 @@
-package org.example;
+package org.example.library;
 
 @SuppressWarnings("unused")
 public class Book {
