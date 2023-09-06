@@ -1,11 +1,23 @@
 package org.example;
 
 import java.util.Objects;
+import java.util.Optional;
 
+@SuppressWarnings("unused")
 public class GeneralTesting {
 
     public static void main(String[] args) {
 
+
+        String var1 = Math.random() > 0.5 ? "str" : null;
+        Optional<String> var1Opt = Optional.ofNullable(var1);
+        System.out.println(var1Opt);
+
+        //testEqualsAndHashCode();
+
+    }
+
+    private static void testEqualsAndHashCode() {
         TestObject a = new TestObject("a", "b");
         TestObject b = new TestObject("a", "b");
 
@@ -15,7 +27,6 @@ public class GeneralTesting {
         //noinspection UnnecessaryToStringCall
         System.out.printf("a -> %s%n", a.toString());
         System.out.printf("a.hashCode() -> %08x%n", a.hashCode());
-
     }
 
     private static class TestObject {
