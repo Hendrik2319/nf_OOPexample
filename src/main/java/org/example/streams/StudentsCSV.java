@@ -46,7 +46,7 @@ public class StudentsCSV {
             Integer id = parseInt(parts[0]);
             if (id==null) { System.out.printf("Can't parse [id] field: \"%s\" in \"%s\"%n", parts[0], str); return null; }
 
-            String name = parts[2];
+            String name = parts[1];
 
             Integer zipCode = parseInt(parts[2]);
             if (zipCode==null) { System.out.printf("Can't parse [zipCode] field: \"%s\" in \"%s\"%n", parts[2], str); return null; }
