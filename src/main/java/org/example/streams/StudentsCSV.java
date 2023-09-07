@@ -3,6 +3,8 @@ package org.example.streams;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class StudentsCSV {
@@ -15,17 +17,22 @@ public class StudentsCSV {
 	•	Entferne ungültige Zeilen und Duplikate
  */
     public static void main(String[] args) {
-        try (Stream<String> lines = Files.lines(Path.of("students.csv"))) {
+        List<String> lines = List.of(); // empty List
 
-            lines
-                    .filter(str -> !str.isBlank() && !str.startsWith("ID,"))
-                    .distinct()
-                    .map(Student::parse)
-                    .forEach(System.out::println);
-
+        try (Stream<String> stream = Files.lines(Path.of("students.csv"))) {
+            lines = new ArrayList<>(stream.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (!lines.isEmpty())
+            lines.remove(0);
+
+        lines.stream()
+            .filter(str -> !str.isBlank())
+            .distinct()
+            .map(Student::parse)
+            .forEach(System.out::println);
     }
 
     private record Student(int id, String name, int zipCode, int age) {
